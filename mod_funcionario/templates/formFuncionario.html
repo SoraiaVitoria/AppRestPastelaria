@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Funcionário{% endblock %}
+{% block content %}
+<form name="funcionario" id="funcionario" action="" method="POST">
+    <h2>Cadastro Funcionário</h2>
+    <div class="form-group" style="border: 2px solid #e3f2fd; padding: 10px;">
+        <div class="form-group row">
+            <label for="id">Código</label>
+            <div class="col-12 col-md-4">
+                <input class="form-control" type="text" name="id" id="id" value="" readonly>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col">
+                <label for="nome">Nome</label>
+                <input class="form-control" type="text" name="nome" id="nome" value="" placeholder="Nome"
+                    maxlength="100" autofocus required>
+            </div>
+            <div class="col">
+                <label for="cpf">CPF</label>
+                <input class="form-control" type="text" name="cpf" id="cpf" value="" placeholder="CPF" maxlength="15"
+                    required>
+            </div>
+            <div class="col">
+                <label for="matricula">Matrícula</label>
+                <input class="form-control" type="text" name="matricula" id="matricula" value="" placeholder="Matrícula"
+                    maxlength="15" required>
+            </div>
+        </div>
+        <div class=" form-group row">
+            <div class="col-12 col-md-4">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input class="form-control" type="tel" name="telefone" id="telefone" value="" placeholder="Telefone"
+                    maxlength="15" required>
+            </div>
+            <div class="col-12 col-md-4">
+                <label for="grupo">Grupo</label>
+                <select class="form-select" name="grupo" id="grupo" aria-label="Grupo">
+                    <option value="0">Atendente</option>
+                    <option value="1">Caixa</option>
+                    <option value="2">Adm</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-12 col-md-4">
+                <label for="senha">Senha</label>
+                <input class="form-control" type="password" name="senha" id="senha" value="Bolinhas" placeholder="Senha"
+                    required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-12 col-md-4">
+                <label for="resenha">Repetir Senha</label>
+                <input class="form-control" type="password" name="resenha" id="resenha" value="Bolinhas"
+                    placeholder="Senha" required>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type='submit' name='salvaFuncionarioDB' id='salvaFuncionarioDB'>
+        <i class='fas fa-save'></i> Salvar</button>
+    <button class="btn btn-secondary" onclick="history.back()" type='return' name='Voltar'>
+        <i class='fas fa-undo'></i>Voltar</button>
+</form>
+{% endblock %}

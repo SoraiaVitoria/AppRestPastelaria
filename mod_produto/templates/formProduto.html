@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Produto{% endblock %}
+{% block content %}
+<form name="funcionario" id="funcionario" action="" method="POST">
+    <h2>Cadastro Produto</h2>
+    <div class="form-group" style="border: 2px solid #e3f2fd; padding: 10px;">
+        <div class="form-group row">
+            <label for="id">Código</label>
+            <div class="col-12 col-md-4">
+                <input class="form-control" type="text" name="id" id="id" value="" readonly>
+            </div>
+        </div>
+        <div class=" form-group row">
+            <div class="col-12 col-md-4">
+                <label for="telefone" class="form-label">Nome</label>
+                <input class="form-control" type="text" name="nome" id="nome" value="" placeholder="Nome Produto"
+                    maxlength="100" autofocus required>
+            </div>
+            <div class="col-12 col-md-4">
+                <label for="grupo">Descrição</label>
+                <input class="form-control" type="text" name="descricao" id="descricao" value="" placeholder="Descrição"
+                    maxlength="100" required>
+
+            </div>
+        </div>
+        <div class=" form-group row">
+            <div class="col-12 col-md-4">
+                <label for="foto">Foto</label>
+                <input class="form-control" type="file" name="foto" id="foto" value="" placeholder="Foto">
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type='submit' name='salvarProdutoDB' id='salvarProdutoDB'>
+        <i class='fas fa-save'></i> Salvar</button>
+    <button class="btn btn-secondary" onclick="history.back()" type='return' name='Voltar'>
+        <i class='fas fa-undo'></i> Voltar</button>
+</form>
+{% endblock %}
