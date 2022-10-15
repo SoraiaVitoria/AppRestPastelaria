@@ -2,64 +2,65 @@
 {% block title %}Funcionário{% endblock %}
 {% block content %}
 <form name="funcionario" id="funcionario" action="" method="POST">
-    <h2>Cadastro Funcionário</h2>
-    <div class="form-group" style="border: 2px solid #e3f2fd; padding: 10px;">
-        <div class="form-group row">
-            <label for="id">Código</label>
-            <div class="col-12 col-md-4">
-                <input class="form-control" type="text" name="id" id="id" value="" readonly>
+    <label class="form-label__title">Criar Cadastro de Funcionário</label><br>
+    <label class="form-label__description">Preencha os campos abaixo para criar um novo funcionário</label>
+    <div class="row g-1 row--border">
+        <div class="row">
+            <label for="id" class="form-label">Código</label>
+            <div class="col-4">
+                <input class="form-control" type="text" name="id" id="id" value="" disabled>
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col">
-                <label for="nome">Nome</label>
-                <input class="form-control" type="text" name="nome" id="nome" value="" placeholder="Nome"
-                    maxlength="100" autofocus required>
-            </div>
-            <div class="col">
-                <label for="cpf">CPF</label>
-                <input class="form-control" type="text" name="cpf" id="cpf" value="" placeholder="CPF" maxlength="15"
+        <div class="row">
+            <div class="col-4">
+                <label for="nome" class="form-label">Nome</label>
+                <input class="form-control" type="text" name="nome" id="nome" value="" maxlength="100" autofocus
                     required>
             </div>
-            <div class="col">
-                <label for="matricula">Matrícula</label>
-                <input class="form-control" type="text" name="matricula" id="matricula" value="" placeholder="Matrícula"
-                    maxlength="15" required>
+            <div class="col-4">
+                <label for="cpf" class="form-label">CPF</label>
+                <input class="form-control" type="text" name="cpf" id="cpf" value="" minlength="14" maxlength="14" required>
+            </div>
+            <div class="col-4">
+                <label for="matricula" class="form-label">Matrícula</label>
+                <input class="form-control" type="text" name="matricula" id="matricula" value="" maxlength="10"
+                    required>
             </div>
         </div>
-        <div class=" form-group row">
-            <div class="col-12 col-md-4">
+        <div class="row">
+            <div class="col-4">
                 <label for="telefone" class="form-label">Telefone</label>
-                <input class="form-control" type="tel" name="telefone" id="telefone" value="" placeholder="Telefone"
-                    maxlength="15" required>
+                <input class="form-control" type="tel" name="telefone" id="telefone" value="" minlength="14" maxlength="14" required>
             </div>
-            <div class="col-12 col-md-4">
-                <label for="grupo">Grupo</label>
-                <select class="form-select" name="grupo" id="grupo" aria-label="Grupo">
+            <div class="col-4">
+                <label for="grupo" class="form-label">Grupo</label>
+                <select class="form-select" name="grupo" id="grupo" aria-label="grupo">
                     <option value="0">Atendente</option>
                     <option value="1">Caixa</option>
                     <option value="2">Adm</option>
                 </select>
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-12 col-md-4">
-                <label for="senha">Senha</label>
-                <input class="form-control" type="password" name="senha" id="senha" value="Bolinhas" placeholder="Senha"
+        <div class="row">
+            <div class="col-4">
+                <label for="senha" class="form-label">Senha</label>
+                <input class="form-control" type="password" name="senha" id="senha" value="Bolinhas" minlength="6" maxlength="20"
+                    required>
+            </div>
+            <div class="col-4">
+                <label for="resenha" class="form-label">Repetir Senha</label>
+                <input class="form-control" type="password" name="resenha" id="resenha" value="Bolinhas" minlength="6" maxlength="20"
                     required>
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-12 col-md-4">
-                <label for="resenha">Repetir Senha</label>
-                <input class="form-control" type="password" name="resenha" id="resenha" value="Bolinhas"
-                    placeholder="Senha" required>
-            </div>
+    </div>
+    <div class="row row--buttons">
+        <div class="col-12">
+            <button class="btn btn-primary" type='submit' name='salvarFuncionarioDB' id='salvarFuncionarioDB'>
+                <i class='fas fa-save'></i> Salvar</button>
+            <button class="btn btn-secondary" onclick="history.back()" type='return' name='Voltar'>
+                <i class='fas fa-undo'></i> Voltar</button>
         </div>
     </div>
-    <button class="btn btn-primary" type='submit' name='salvaFuncionarioDB' id='salvaFuncionarioDB'>
-        <i class='fas fa-save'></i> Salvar</button>
-    <button class="btn btn-secondary" onclick="history.back()" type='return' name='Voltar'>
-        <i class='fas fa-undo'></i>Voltar</button>
 </form>
 {% endblock %}

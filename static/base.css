@@ -1,0 +1,36 @@
+nav {
+    background-color: #0d6efd;
+}
+
+.nav-link{
+    color: rgb(223, 222, 222);
+}
+
+.important {
+    color: #6495ED;
+}
+
+.form-label__title {
+    font-size: 30px;
+}
+
+.form-label__description {
+    font-size: 15px;
+}
+
+.row--border {
+    border: 2px solid #e3f2fd;
+    padding: 10px;
+}
+
+.row--buttons {
+    margin-top: 10px;
+}
+
+.row__textarea {
+    height: 80px
+}
+
+.footer {
+    background-color: #0d6efd;
+}
