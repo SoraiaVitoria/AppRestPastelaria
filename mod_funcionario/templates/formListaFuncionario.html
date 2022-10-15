@@ -2,13 +2,10 @@
 {% block title %}Funcionários{% endblock %}
 {% block content %}
 <form action="{{ url_for('funcionario.formFuncionario') }}" method="POST">
-
-    <div class="form-group row">
-        <div class="col-12 col-md-12">
-            <label style="font-size: 30px;">Funcionários</label>
-            <button class="btn btn-primary float-right" type="submit" name="formNovo"><i class="fas fa-plus"></i> Novo
-            </button>
-        </div>
+    <label class="form-label__title">Funcionários</label>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary" type="submit" name="formNovo"><i class="fas fa-plus"></i> Novo
+        </button>
     </div>
     <table class="table">
         <thead class="thead-light">
