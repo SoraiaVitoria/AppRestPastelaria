@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Cliente{% endblock %}
 {% block content %}
-<form name="funcionario" id="funcionario" action="" method="POST">
+<form name="funcionario" id="funcionario" action="{{ url_for('cliente.insert') }}" method="POST">
     <label class="form-label__title">Criar Cadastro de Cliente</label><br>
     <label class="form-label__description">Preencha os campos abaixo para criar um novo cliente</label>
     <div class="row g-1 row--border">

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Produto{% endblock %}
 {% block content %}
-<form name="funcionario" id="funcionario" action="" method="POST">
+<form name="funcionario" id="funcionario" action="{{ url_for('produto.insert') }}" method="POST" enctype="multipart/form-data">
     <label class="form-label__title">Criar Cadastro de Produto</label><br>
     <label class="form-label__description">Preencha os campos abaixo para criar um novo produto</label>
     <div class="row g-1 row--border">
@@ -18,14 +18,18 @@
                     required>
             </div>
             <div class="col-4">
-                <label for="foto" class="form-label">Foto</label>
-                <input class="form-control" type="file" name="foto" id="foto" value="">
+                <label for="valor_unitario" class="form-label">Valor Unitário</label>
+                <input class="form-control" type="number" name="valor_unitario" id="valor_unitario" value="">
+            </div>
+            <div class="col-4">
+                <label for="foto" class="form-label">Imagem</label>
+                <input class="form-control" type="file" name="foto" accept="image/*" id="foto" value="">
             </div>
         </div>
         <div class="row">
-            <div class="col-8">
+            <div class="col-12">
                 <label for="descricao" class="form-label">Descrição</label>
-                <textarea class="form-control row__textarea" maxlength="100" id="descricao"></textarea>
+                <textarea class="form-control row__textarea" maxlength="100" id="descricao" name="descricao"></textarea>
             </div>
         </div>
     </div>
