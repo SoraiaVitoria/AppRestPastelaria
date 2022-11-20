@@ -17,8 +17,6 @@
                 <th scope="col">Telefone</th>
                 <th scope="col">Grupo</th>
                 <th scope="col">Senha</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -32,8 +30,13 @@
                 <td> {{ row['telefone'] }}</td>
                 <td> {{ row['grupo'] }}</td>
                 <td> {{ row['senha'] }}</td>
-                <td><i class="fas fa-edit"></i></td>
-                <td><i class="fas fa-trash"></i></td>
+                <td>
+                    <form action="{{ url_for('funcionario.formEditFuncionario') }}" method="POST"
+                        name="formEdit{{ row['id_funcionario'] }}"><input type="hidden" name="id"
+                            value="{{ row['id_funcionario'] }}">
+                        <button style="background-color: #ffffff; border: none;" type="submit" name="formEditFuncionario"> <i class="fas fa-edit"></i></button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
             {% endif %}

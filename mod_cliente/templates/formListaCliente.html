@@ -17,23 +17,27 @@
                 <th scope="col">Compra Fiado</th>
                 <th scope="col">Dia Fiado</th>
                 <th scope="col">Senha</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             {% if result %}
             {% for row in result[0] %}
             <tr>
-                <th scope="row"> {{ row['id_funcionario'] }}</th>
+                <th scope="row"> {{ row['id_cliente'] }}</th>
                 <td> {{ row['nome'] }}</td>
                 <td> {{ row['cpf'] }}</td>
                 <td> {{ row['telefone'] }}</td>
                 <td> {{ row['compra_fiado'] }}</td>
                 <td> {{ row['dia_fiado'] }}</td>
                 <td> {{ row['senha'] }}</td>
-                <td><i class="fas fa-edit"></i></td>
-                <td><i class="fas fa-trash"></i></td>
+                <td>
+                    <form action="{{ url_for('cliente.formEditCliente') }}" method="POST"
+                        name="formEdit{{ row['id_cliente'] }}"><input type="hidden" name="id"
+                            value="{{ row['id_cliente'] }}">
+                        <button style="background-color: #ffffff; border: none;" type="submit" name="formEditCliente">
+                            <i class="fas fa-edit"></i></button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
             {% endif %}
