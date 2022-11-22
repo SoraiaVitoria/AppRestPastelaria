@@ -1,35 +1,49 @@
 {% extends "base.html" %}
 {% block title %}Produto{% endblock %}
+{# ajusta a variáveis conforme novo ou edit #}
+{% set id = result[0].id_produto if result else '0' %}
+{% set nome = result[0].nome if result else '' %}
+{% set descricao = result[0].descricao if result else '' %}
+{% set valor_unitario = result[0].valor_unitario if result else '' %}
+{% set foto = result[0].foto if result else '' %}
 {% block content %}
-<form name="funcionario" id="funcionario" action="{{ url_for('produto.insert') }}" method="POST" enctype="multipart/form-data">
-    <label class="form-label__title">Criar Cadastro de Produto</label><br>
-    <label class="form-label__description">Preencha os campos abaixo para criar um novo produto</label>
+<form name="{{ 'formEditar' if result else 'formAdicionar' }}" 
+        id="{{ 'formEditar' if result else 'formAdicionar' }}" 
+        method="POST" action="{{ url_for('produto.edit') if result else url_for('produto.insert') }}" enctype="multipart/form-data">
+    <label class="form-label__title">{{ 'Editar Cadastro de Produto' if result else 'Criar Cadastro de
+        Produto'}}</label><br>
+    <label class="form-label__description">{{ 'Preencha os campos abaixo para editar o produto' if result else
+        'Preencha os campos abaixo para criar um novo produto' }}</label>
     <div class="row g-1 row--border">
         <div class="row">
             <label for="id" class="form-label">Código</label>
             <div class="col-12 col-md-4">
-                <input class="form-control" type="text" name="id" id="id" value="" disabled>
+                <input class="form-control" type="text" name="id=produto" id="id-produto" value="" disabled>
+                <input class="form-control" type="hidden" name="id" id="id" value="{{ id }}">
             </div>
         </div>
         <div class="row">
             <div class="col-4">
                 <label for="nome" class="form-label">Nome</label>
-                <input class="form-control" type="text" name="nome" id="nome" value="" maxlength="100" autofocus
+                <input class="form-control" type="text" name="nome" id="nome" value="{{ nome }}" maxlength="100" autofocus
                     required>
             </div>
-            <div class="col-4">
+            <div class="col-2">
                 <label for="valor_unitario" class="form-label">Valor Unitário</label>
-                <input class="form-control" type="number" name="valor_unitario" id="valor_unitario" value="">
+                <input class="form-control" type="number" name="valor_unitario" id="valor_unitario" value="{{ valor_unitario }}">
             </div>
             <div class="col-4">
                 <label for="foto" class="form-label">Imagem</label>
-                <input class="form-control" type="file" name="foto" accept="image/*" id="foto" value="">
+                <input class="form-control" type="file" name="foto" accept="image/*" id="foto">
+            </div>
+            <div class="col-2">
+                <img src="{{ foto }}" width="100" alt="Imagem">
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-10">
                 <label for="descricao" class="form-label">Descrição</label>
-                <textarea class="form-control row__textarea" maxlength="100" id="descricao" name="descricao"></textarea>
+                <textarea class="form-control row__textarea" maxlength="100" id="descricao" name="descricao">{{ descricao }}</textarea>
             </div>
         </div>
     </div>

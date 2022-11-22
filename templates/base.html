@@ -13,8 +13,6 @@
 
     {% endblock %}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -64,13 +62,18 @@
     </div>
 
     {% block js %}
-    
     <script src="{{ url_for('static', filename='bootstrap-5.2.2-dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='fontawesome-free-6.2.0-web/js/all.js') }}"></script>
-    <script src="{{ url_for('static', filename='masks.js') }}"></script>
     <script src="{{ url_for('static', filename='sweetalert2/sweetalert2.all.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='jquery/jquery-3.6.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='jquery/jquery-3.6.1.js') }}"></script>
+    <script src="{{ url_for('static', filename='jquery/jquery.mask.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='masks.js') }}"></script>
+    {% block jslist %}
 
+    {% endblock %}
+    {% endblock %}
+    
+    {% block sweet %}
     {% if request.args.get('msg'): %}
     <script>
         Swal.fire({
@@ -109,4 +112,5 @@
     {% endblock %}
 
 </body>
+
 </html>

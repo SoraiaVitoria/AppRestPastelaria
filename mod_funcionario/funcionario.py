@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 import requests
 from funcoes import Funcoes
 
@@ -57,6 +57,20 @@ def edit():
         return redirect( url_for('funcionario.formListaFuncionario', msg=result[0]) )
     except Exception as e:
         return render_template('formListaFuncionario.html', msgErro=e.args[0])
+
+@bp_funcionario.route('/delete', methods=['POST'])
+def delete():
+    try:
+        # dados enviados via FORM
+        id_funcionario = request.form['id_funcionario']
+        # executa o verbo DELETE da API e armazena seu retorno
+        response = requests.delete(urlApiFuncionarios + id_funcionario, headers=headers)
+        result = response.json()
+        if (response.status_code != 200 or result[1] != 201):
+            raise Exception(result[0])
+        return jsonify(erro=False, msg=result[0])
+    except Exception as e:
+        return jsonify(erro=True, msgErro=e.args[0])
 
 ''' rotas dos formulários '''
 @bp_funcionario.route('/', methods=['GET', 'POST'])
