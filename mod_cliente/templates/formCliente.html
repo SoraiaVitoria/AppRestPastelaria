@@ -1,52 +1,68 @@
 {% extends "base.html" %}
 {% block title %}Cliente{% endblock %}
+{# ajusta as variáveis conforme novo ou edit #}
+{% set id = result[0].id_cliente if result else '0' %}
+{% set nome = result[0].nome if result else '' %}
+{% set cpf = result[0].cpf if result else '' %}
+{% set telefone = result[0].telefone if result else '' %}
+{% set compra_fiado = result[0].compra_fiado if result else '' %}
+{% set dia_fiado = result[0].dia_fiado if result else '' %}
+{% set senha = result[0].senha if result else '' %}
 {% block content %}
-<form name="funcionario" id="funcionario" action="{{ url_for('cliente.insert') }}" method="POST">
-    <label class="form-label__title">Criar Cadastro de Cliente</label><br>
-    <label class="form-label__description">Preencha os campos abaixo para criar um novo cliente</label>
+<form name="{{ 'formEditar' if result else 'formAdicionar' }}" 
+    id="{{ 'formEditar' if result else 'formAdicionar' }}"
+    action="{{ url_for('cliente.edit') if result else url_for('cliente.insert') }}" 
+    method="POST">
+    <label class="form-label__title">{{ 'Editar Cadastro de Cliente' if result else 'Criar Cadastro de
+        Cliente'}}</label><br>
+    <label class="form-label__description">{{ 'Preencha os campos abaixo para editar o cliente' if result else
+        'Preencha os campos abaixo para criar um novo cliente' }}</label>
     <div class="row g-1 row--border">
         <div class="row">
             <label for="id">Código</label>
             <div class="col-4">
-                <input class="form-control" type="text" name="id" id="id" value="" disabled>
+                <input class="form-control" type="text" name="id-cliente" id="id-cliente" value="{{ id }}" disabled>
+                <input class="form-control" type="hidden" name="id" id="id" value="{{ id }}">
             </div>
         </div>
         <div class="row">
             <div class="col-4">
                 <label for="nome" class="form-label">Nome</label>
-                <input class="form-control" type="text" name="nome" id="nome" value="" maxlength="100" autofocus
-                    required>
+                <input class="form-control" type="text" name="nome" id="nome" value="{{ nome }}" maxlength="100"
+                    autofocus required>
             </div>
             <div class="col-4">
                 <label for="cpf" class="form-label">CPF</label>
-                <input class="form-control" type="text" name="cpf" id="cpf" value="" maxlength="14" maxlength="14"
-                    required>
+                <input class="form-control" type="text" name="cpf" id="cpf" value="{{ cpf }}" maxlength="14"
+                    maxlength="14" required>
             </div>
             <div class="col-4">
                 <label for="telefone" class="form-label">Telefone</label>
-                <input class="form-control" type="tel" name="telefone" id="telefone" value="" maxlength="14"
-                    maxlength="14" required>
+                <input class="form-control" type="tel" name="telefone" id="telefone" value="{{ telefone }}"
+                    maxlength="14" maxlength="14" required>
             </div>
         </div>
         <div class="row">
             <div class="col-4">
                 <label for="compra-fiado" class="form-label">Compra Fiado</label>
-                <input class="form-control" type="text" name="compra-fiado" id="compra-fiado" value="" required>
+                <input class="form-control" type="text" name="compra-fiado" id="compra-fiado" value="{{ compra_fiado }}"
+                    required>
             </div>
             <div class="col-4">
                 <label for="dia-fiado" class="form-label">Dia Fiado</label>
-                <input class="form-control" type="text" name="dia-fiado" id="dia-fiado" value="" required>
+                <input class="form-control" type="text" name="dia-fiado" id="dia-fiado" value="{{ dia_fiado }}"
+                    required>
 
             </div>
         </div>
         <div class="row">
             <div class="col-4">
                 <label for="senha" class="form-label">Senha</label>
-                <input class="form-control" type="password" name="senha" id="senha" value="Bolinhas" required>
+                <input class="form-control" type="password" name="senha" id="senha" value="{{ senha }}" required>
             </div>
             <div class="col-4">
                 <label for="resenha" class="form-label">Repetir Senha</label>
-                <input class="form-control" type="password" name="resenha" id="resenha" value="Bolinhas" required>
+                <input class="form-control" type="password" name="resenha" id="resenha" value="{{ senha }}" required>
             </div>
         </div>
     </div>
