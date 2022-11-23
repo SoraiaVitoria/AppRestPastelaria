@@ -29,9 +29,9 @@ def insert():
         if (response.status_code != 200 or result[1] != 200):
             raise Exception(result[0])
 
-        return jsonify(erro=False, msg=result[0])
+        return redirect(url_for('produto.formListaProduto', msg=result[0]))
     except Exception as e:
-        return jsonify(erro=True, msgErro=e.args[0])
+        return render_template('formListaProduto.html', msgErro=e.args[0])
 
 @bp_produto.route('/edit', methods=['POST'])
 def edit():
@@ -53,10 +53,9 @@ def edit():
         if (response.status_code != 200 or result[1] != 200):
             raise Exception(result[0])
 
-        return jsonify(erro=False, msg=result[0])
-        
+        return redirect(url_for('produto.formListaProduto', msg=result[0]))
     except Exception as e:
-        return jsonify(erro=True, msgErro=e.args[0])
+        return render_template('formListaProduto.html', msgErro=e.args[0])
 
 @bp_produto.route('/delete', methods=['POST'])
 def delete():

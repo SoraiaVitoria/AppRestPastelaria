@@ -51,7 +51,7 @@ def edit():
         response = requests.put(urlApiClientes + id_cliente, headers=headers, json=payload)
         result = response.json()
         
-        if (response.status_code != 200 or result[1] != 201):
+        if (response.status_code != 200 or result[1] != 200):
             raise Exception(result[0])
         
         return redirect( url_for('cliente.formListaCliente', msg=result[0]) )
