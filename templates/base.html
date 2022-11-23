@@ -47,6 +47,7 @@
                     </li>
                 </ul>
             </div>
+            <a href="{{ url_for('login.logoff') }}"><i class="fas fa-door-open"></i> SAIR</a>
         </div>
     </nav>
     {% endblock %}
@@ -72,7 +73,7 @@
 
     {% endblock %}
     {% endblock %}
-    
+
     {% block sweet %}
     {% if request.args.get('msg'): %}
     <script>
