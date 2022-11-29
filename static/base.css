@@ -23,8 +23,17 @@ nav {
     padding: 10px;
 }
 
+.row--login {
+    width: 30%;
+    background-color: #dae9e9;
+}
+
 .row--buttons {
     margin-top: 10px;
+}
+
+.row--login-buttons {
+    background-color: #8064A2 !important;
 }
 
 .row__textarea {
@@ -33,4 +42,8 @@ nav {
 
 .footer {
     background-color: #727c83;
+}
+
+.login__button, .login__button:hover, .login__button:active, .login__button:visited {
+    background-color: #8064A2 !important;
 }

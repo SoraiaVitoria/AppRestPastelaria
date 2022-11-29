@@ -1,6 +1,10 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
 from funcoes import Funcoes
 from functools import wraps
+import requests
+
+urlApiFuncionarios = "http://localhost:8000/funcionario/"
+headers = {'x-token': 'abcBolinhasToken', 'x-key': 'abcBolinhasKey'}
 
 # valida se o usuário esta ativo na sessão
 def validaSessao(f): 
@@ -31,10 +35,17 @@ def validaLogin():
         
         # limpa a sessão
         session.clear()
-        
-        if (cpf == "abc" and senha == Funcoes.cifraSenha('Bolinhas')):
+
+        response = requests.get(urlApiFuncionarios + "cpf/" + cpf, headers=headers)
+        result = response.json()
+
+        if (response.status_code != 200 or result[1] != 200):
+            raise Exception("Falha de Login! Verifique seus dados e tente novamente!")
+
+        if (cpf == result[0][0]['cpf'] and senha == result[0][0]['senha']):
             # registra usuário na sessão, armazenando o login do usuário
             session['login'] = cpf
+            session['nome'] = result[0][0]['nome']
             # abre a aplicação na tela home
             return redirect(url_for('index.formIndex'))
         else:
@@ -47,6 +58,7 @@ def validaLogin():
 def logoff():
     # limpa um valor individual
     session.pop('login', None)
+    session.pop('nome', None)
 
     # limpa toda sessão
     session.clear()
