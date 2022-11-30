@@ -8,9 +8,6 @@
 {% set telefone = result[0].telefone if result else '' %}
 {% set grupo = result[0].grupo if result else '' %}
 {% set senha = result[0].senha if result else '' %}
-{% set atendente = 'Atendente' if result[0].grupo == 0 else '' %}
-{% set caixa = 'Caixa' if result[0].grupo == 1 else '' %}
-{% set adm = 'Adm' if result[0].grupo == 2 else '' %}
 {% block content %}
 <form name="{{ 'formEditar' if result else 'formAdicionar' }}" 
     id="{{ 'formEditar' if result else 'formAdicionar' }}"
@@ -54,7 +51,7 @@
             <div class="col-4">
                 <label for="grupo" class="form-label">Grupo</label>
                 <select class="form-select" name="grupo" id="grupo" aria-label="Grupo">
-                    <option value="{{ grupo }}" selected>{{ atendente }} {{ caixa }} {{ adm }}</option>
+                    <option value="{{ grupo }}" selected>{{ grupo }}</option>
                     <option value="0">Atendente</option>
                     <option value="1">Caixa</option>
                     <option value="2">Adm</option>
