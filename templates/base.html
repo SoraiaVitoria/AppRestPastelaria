@@ -47,6 +47,7 @@
                     </li>
                 </ul>
             </div>
+            <a href="{{ url_for('login.logoff') }}"><i class="fas fa-door-open"></i> SAIR</a>
         </div>
     </nav>
     {% endblock %}
@@ -67,12 +68,12 @@
     <script src="{{ url_for('static', filename='sweetalert2/sweetalert2.all.min.js') }}"></script>
     <script src="{{ url_for('static', filename='jquery/jquery-3.6.1.js') }}"></script>
     <script src="{{ url_for('static', filename='jquery/jquery.mask.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='masks.js') }}"></script>
+    <script src="{{ url_for('static', filename='utils.js') }}"></script>
     {% block jslist %}
 
     {% endblock %}
     {% endblock %}
-    
+
     {% block sweet %}
     {% if request.args.get('msg'): %}
     <script>

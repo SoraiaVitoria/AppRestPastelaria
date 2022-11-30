@@ -32,8 +32,8 @@
                 <td> {{ row['senha'] }}</td>
                 <td>
                     <form action="{{ url_for('funcionario.formEditFuncionario') }}" method="POST"
-                        name="formEdit{{ row['id_funcionario'] }}"><input type="hidden" name="id"
-                            value="{{ row['id_funcionario'] }}">
+                        name="formEdit{{ row['id_funcionario'] }}">
+                        <input type="hidden" name="id" value="{{ row['id_funcionario'] }}">
                         <button style="background-color: #ffffff; border: none;" type="submit"
                             name="formEditFuncionario"> <i class="fas fa-edit"></i></button>
                     </form>
