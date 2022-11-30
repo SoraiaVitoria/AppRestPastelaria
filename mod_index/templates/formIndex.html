@@ -4,5 +4,10 @@
 
 <label text-align:center class="form-label__title">Home</label>
 <p class="important">Seja bem vindo <b>{{ session['nome'] }}</b>!</p>
+<p class="important">Você pertence ao grupo
+    <b>{{ 'Atendente' if session['grupo'] == 0}}
+        {{ 'Caixa' if session['grupo'] == 1}}
+        {{ 'Adm' if session['grupo'] == 2}}</b>
+</p>
 
 {% endblock %}

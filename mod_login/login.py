@@ -46,6 +46,8 @@ def validaLogin():
             # registra usuário na sessão, armazenando o login do usuário
             session['login'] = cpf
             session['nome'] = result[0][0]['nome']
+            session['grupo'] = result[0][0]['grupo']
+
             # abre a aplicação na tela home
             return redirect(url_for('index.formIndex'))
         else:
@@ -59,6 +61,7 @@ def logoff():
     # limpa um valor individual
     session.pop('login', None)
     session.pop('nome', None)
+    session.pop('grupo', None)
 
     # limpa toda sessão
     session.clear()

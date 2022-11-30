@@ -34,10 +34,10 @@
             </div>
             <div class="col-4">
                 <label for="foto" class="form-label">Imagem</label>
-                <input class="form-control" type="file" name="foto" accept="image/*" id="foto">
+                <input class="form-control" type="file" name="foto" accept="image/*" id="foto" onchange="readURL(this);">
             </div>
-            <div class="col-2">
-                <img src="{{ foto }}" width="100" alt="Imagem">
+            <div class="col-1">
+                <img id="foto-display" src="{{ foto }}" width="100" alt="Imagem">
             </div>
         </div>
         <div class="row">
